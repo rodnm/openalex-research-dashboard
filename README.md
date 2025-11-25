@@ -2,7 +2,7 @@
 
 A modular **ETL pipeline** and **interactive dashboard** for analyzing bibliometric data from [OpenAlex](https://openalex.org/). This project tracks research trends, top authors, institutions, and influential works across multiple fields of study (e.g., Artificial Intelligence, Economics, Physics).
 
-<img width="2816" height="1536" alt="openalex-research-dashboard" src="https://github.com/user-attachments/assets/7422235e-f12b-4ae5-baa6-786a40a01696" />
+<img width="2816" height="1536" alt="openalex-research-dashboard" src="https://github.com/user-attachments/assets/f67de31d-65dc-4888-8d38-161b48728d8f" />
 
 
 ## 🎯 Objectives
