@@ -1,4 +1,8 @@
 services:
+  # ==========================================
+  # 1. PostgreSQL Database
+  # ==========================================
+  # Serves as the backend for Airflow metadata.
   postgres:
     image: postgres:13
     environment:
@@ -14,6 +18,10 @@ services:
       start_period: 5s
     restart: always
 
+  # ==========================================
+  # 2. Airflow Initialization
+  # ==========================================
+  # Runs once to initialize the database and create the admin user.
   airflow-init:
     build: .
     depends_on:
@@ -39,6 +47,11 @@ services:
     volumes:
       - .:/sources
 
+  # ==========================================
+  # 3. Airflow Webserver
+  # ==========================================
+  # The UI for managing DAGs and monitoring runs.
+  # Accessible at http://localhost:8080
   airflow-webserver:
     build: .
     command: webserver
@@ -63,12 +76,17 @@ services:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__API__AUTH_BACKENDS=airflow.api.auth.backend.basic_auth
     volumes:
+      # Mount local directories to container for real-time code updates
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/config:/opt/airflow/config
       - ./etl:/opt/airflow/etl
       - ./data:/opt/airflow/data
       - ./dashboard:/opt/airflow/dashboard
 
+  # ==========================================
+  # 4. Airflow Scheduler
+  # ==========================================
+  # Monitors DAGs and triggers tasks.
   airflow-scheduler:
     build: .
     command: scheduler
