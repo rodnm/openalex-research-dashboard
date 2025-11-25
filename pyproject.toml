@@ -1,0 +1,20 @@
+[project]
+name = "openalex-dashboard"
+version = "0.1.0"
+description = "ETL pipeline for OpenAlex data using Airflow and Streamlit"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apache-airflow>=2.10.0",
+    "streamlit>=1.38.0",
+    "pandas>=2.2.0",
+    "pyarrow>=17.0.0",
+    "requests>=2.32.0",
+    "plotly>=5.24.0",
+    "psycopg2-binary>=2.9.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
